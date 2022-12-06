@@ -11,8 +11,8 @@ THRESH_TOZERO：阈值化为0
 THRESH_TOZERO_INV：反阈值化为0
 """
 
-img = cv2.imread("../data/dataset/srcImage/{}.jpg".format(str(1)))
-grayImage = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+img = cv2.imread("../data/testData/colarDemo.jpg")
+grayImage = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
 ret, thresh1 = cv2.threshold(grayImage, 127, 255, cv2.THRESH_BINARY)
 ret, thresh2 = cv2.threshold(grayImage, 127, 255, cv2.THRESH_BINARY_INV)
@@ -28,6 +28,6 @@ for i in range(6):
     plt.subplot(2,3,i+1)
     plt.imshow(images[i], 'gray')
     plt.title(titles[i])
-    plt.xticks([])
-    plt.yticks([])
+plt.xticks([])
+plt.yticks([])
 plt.show()
