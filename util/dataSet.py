@@ -13,13 +13,13 @@ from tqdm import tqdm
 
 # 测试集的数量
 eval_num = 10
-image_size = (224, 224)
+image_size = (256, 256)
 # 训练图片路径
-train_images_path = "E:/yexy/line-segmentation/data/dataset/test/train"
+train_images_path = "E:/yexy/ICImageSegment/data/dataset/test/train"
 # 标签图像路径
-label_images_path = "E:/yexy/line-segmentation/data/dataset/test/train_mask"
+label_images_path = "E:/yexy/ICImageSegment/data/dataset/test/train_mask"
 # 测试图片路径
-test_images_path = "E:/yexy/line-segmentation/data/dataset/test/val"
+test_images_path = "E:/yexy/ICImageSegment/data/dataset/test/val"
 
 class ImageDataset(Dataset):
     def __init__(self, path, transform, imageSize):

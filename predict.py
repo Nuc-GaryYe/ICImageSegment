@@ -12,8 +12,8 @@ import matplotlib.pyplot as plt
 import paddle.nn as nn
 from tqdm import tqdm
 import util.dataSet
-work_path = "E:/yexy/line-segmentation/result"
-checkpoint_path="./net_params/Unet_model.pdparams"
+work_path = "E:/yexy/ICImageSegment/result"
+checkpoint_path="./net_params/15.pdparams"
 
 if __name__ == "__main__":
     test_dataset = util.dataSet.getTestDataset()
@@ -21,7 +21,7 @@ if __name__ == "__main__":
 
     # 实例化，网络三选一，默认U-Net
     #model = paddle.Model(network.unet.UNet(2))  # U-Net
-    model = paddle.Model(network.unet3p.UNet_3Plus(n_classes=2, end_sigmoid=False))
+    model = paddle.Model(network.unet.UNet(2))
     model.load(checkpoint_path)
 
     for i, img in tqdm(enumerate(test_dataset)):

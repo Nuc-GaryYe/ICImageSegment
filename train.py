@@ -18,10 +18,10 @@ def trainUnet(train_dataset, eval_dataset, batch_size):
     train_dataloader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, drop_last=True)
     eval_dataloader = DataLoader(eval_dataset, batch_size=batch_size, shuffle=True, drop_last=True)
 
-    model = paddle.Model(network.unet.UNet(2))
+    model = paddle.Model(network.unet.UNet(1))
     opt = paddle.optimizer.Momentum(learning_rate=1e-3, parameters=model.parameters(), weight_decay=1e-2)
     model.prepare(opt, paddle.nn.CrossEntropyLoss(axis=1))
-    model.fit(train_dataloader, eval_dataloader, epochs=10, verbose=2, save_dir="./net_params", log_freq=200)
+    model.fit(train_dataloader, eval_dataloader, epochs=10, verbose=2, save_dir="./net_params")
 
 def trainUnet2(train_dataset, eval_dataset, batch_size):
     train_loader = paddle.io.DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=0, drop_last=True,
@@ -77,4 +77,4 @@ if __name__ == "__main__":
     train_dataset, eval_dataset = util.dataSet.getDataset()
     # 批量大小
     batch_size = 2
-    trainUnet2(train_dataset, eval_dataset, batch_size)
+    trainUnet(train_dataset, eval_dataset, batch_size)
